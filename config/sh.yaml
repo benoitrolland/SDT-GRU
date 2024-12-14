@@ -1,7 +1,7 @@
 loader: 'sh'
 dataset:
   root: 'data/shanghai'
-  batch_size: 32
+  batch_size: 26
   num_workers: 0
 
 model:
