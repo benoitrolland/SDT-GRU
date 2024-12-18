@@ -3,8 +3,8 @@ from utils import get_logger
 
 import yaml
 
-
 if __name__ == '__main__':
+    SEED = 42
     log_dir = 'log/HZ'
     logger = get_logger(log_dir)
 
@@ -17,4 +17,4 @@ if __name__ == '__main__':
 
     logger.info(cfg)
 
-    train_model(cfg, logger, log_dir, seed=None)
+    train_model(cfg, logger, log_dir, seed=SEED)

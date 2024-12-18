@@ -5,6 +5,7 @@ from model.SDT_GRUs import SDT_GRUs
 from trainer import metrics
 from utils import StandardScaler, move2device, StepLR2
 
+import random
 import torch
 import torch.nn as nn
 from torch.nn.utils import clip_grad_norm_
@@ -138,8 +139,13 @@ def evaluate_model(eval_type, model, data_loader, scaler, device, logger):
 
 def train_model(cfg, logger, log_dir, seed):
     if seed is not None:
-        np.random.seed(seed)
-        torch.manual_seed(seed)
+        random.seed(seed)  # Python random module
+        np.random.seed(seed)  # NumPy
+        torch.manual_seed(seed)  # PyTorch CPU
+        torch.cuda.manual_seed_all(seed)  # PyTorch GPU (all devices)
+        # Additional settings for complete reproducibility
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
 
     device = cfg['device']
 

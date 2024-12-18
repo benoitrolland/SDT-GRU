@@ -39,6 +39,23 @@ If you find the paper useful, please cite as following:
 }
 ```
 
-Benoit Rolland:
+## Benoit Rolland:
+
+### Shared weights
+NOT FULLY WORKING SHARE, TO BE UPDATED
 for those not having cuda,  wheights calculated whith run_model_<town_suffix>.py were shared [here](https://drive.google.com/drive/folders/19W6QZe1-GdjLpMfi0xBS7r8IXAKnbzYc?usp=sharing)
 The log dir was renamed by adding the town suffix in each town dedicared archive
+
+### Fixed Random seed:
+Code updated for reproductible results
+Here are the expectedly reproductible result for `run_model_HZ.py` with `train: epoch: 1` within `config/hz.yaml`
+ 
+` model.load_state_dict(torch.load(os.path.join(log_dir, 'best.pt')))
+2024-12-18 12:03:58,827 - Load best params
+2024-12-18 12:03:59,305 - Evaluation_test_Begin:
+2024-12-18 12:03:59,306 - Horizon 01, MAE: 90.68, MAPE: 0.4814, RMSE: 196.17
+2024-12-18 12:03:59,306 - Horizon 02, MAE: 95.52, MAPE: 0.5068, RMSE: 203.67
+2024-12-18 12:03:59,307 - Horizon 03, MAE: 102.78, MAPE: 0.5545, RMSE: 213.22
+2024-12-18 12:03:59,307 - Horizon 04, MAE: 107.31, MAPE: 0.7246, RMSE: 217.66
+2024-12-18 12:03:59,308 - Average MAE: 99.07, MAPE: 0.5668, RMSE: 207.68
+2024-12-18 12:03:59,308 - Evaluation_test_End:`
